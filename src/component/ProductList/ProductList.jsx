@@ -1,17 +1,19 @@
 import React from 'react'
+import './ProductList.css'
 
-export default function ProductList() {
-  let productList = ["Shampoo", "Conditioner", "Toys", "Book"]
+export default function ProductList2({products}) {
 
+ 
   return (
-    <>
-    <h1>This is Product List</h1>
-    <ul>
-      {
-        productList.map ((item)=>(<li>{item}</li>))
-      }
-    </ul>
-    </>
-    
+   <table>
+   {
+    products.map ((product,idx)=>(
+       <tr key={idx} className="blue">
+        <td>{product.productName}</td>
+        <td>{product.productPrice}</td>
+      </tr>
+    ))
+   } 
+   </table>
   )
 }

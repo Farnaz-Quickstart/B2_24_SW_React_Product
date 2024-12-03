@@ -1,15 +1,22 @@
 import React, {useState} from 'react'
 
-export default function ProductForm() {
+export default function ProductForm({products,setProducts}) {
  
   const [newProductName, setNewProductName] = useState ("Book")
   const [newProductPrice, setNewProductPrice] = useState ("25")
 
-  let handleClick = (e) => {
-    e.preventDefault()
-    console.log ("hi")
-    console.log (newProductName)
-    console.log (newProductPrice)
+  let handleADD = () => {
+
+    console.log ("Handle ADD")
+    let NewProduct = {
+      productName:newProductName,
+      productPrice:newProductPrice
+    }
+    console.log (NewProduct)
+    // e.preventDefault()
+
+    setProducts([...products,NewProduct])
+    
   }
 
 
@@ -21,7 +28,7 @@ export default function ProductForm() {
       <label>Product Price: 
         <input type="text" name="productPrice" id="productPrice" value={newProductPrice} onChange={(e)=>setNewProductPrice(e.target.value)} ></input>
       </label>
-      <button type="button" onClick={handleClick}>Add Product</button>
+      <button type="button" onClick={handleADD}>Add Product</button>
     </form>
   )
 }
